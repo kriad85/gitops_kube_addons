@@ -6,6 +6,8 @@ metadata:
   labels:
     app.kubernetes.io/name: karpenter
     app.kubernetes.io/component: nodepool
+  annotations:
+    argocd.argoproj.io/sync-options: SkipNamespace=true
 spec:
   disruption:
     budgets:
