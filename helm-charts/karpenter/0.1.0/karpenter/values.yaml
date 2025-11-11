@@ -183,8 +183,10 @@ ocinodeclass:
   okeNativePodNetworking: true
   kubelet:
     evictionHard:
-      memory.available: "750Mi"
-      nodefs.available: "10%"
+      memory:
+        available: "750Mi"
+      nodefs:
+        available: "10%"
     systemReserved:
       memory: "100Mi"
 
