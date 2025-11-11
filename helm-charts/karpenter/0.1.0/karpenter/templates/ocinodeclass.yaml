@@ -1,0 +1,33 @@
+{{- if .Values.ocinodeclass.enabled }}
+apiVersion: karpenter.k8s.oracle/v1alpha1
+kind: OciNodeClass
+metadata:
+  name: {{ .Values.ocinodeclass.name | default "default" }}
+  labels:
+    app.kubernetes.io/name: karpenter
+    app.kubernetes.io/component: nodeclass
+spec:
+  agentList:
+    - Bastion
+  bootConfig:
+    bootVolumeSizeInGBs: {{ .Values.ocinodeclass.bootVolumeSizeGB | default 100 }}
+    bootVolumeVpusPerGB: {{ .Values.ocinodeclass.bootVolumeVpusPerGB | default 10 }}
+  imageFamily: {{ .Values.ocinodeclass.imageFamily | default "OracleOKELinux" }}
+  imageSelector:
+    - compartmentId: {{ .Values.settings.compartmentId }}
+      name: {{ .Values.ocinodeclass.image }}
+  metaData:
+    oke-native-pod-networking: "{{ ternary "true" "false" .Values.ocinodeclass.okeNativePodNetworking }}"
+    ssh_authorized_keys: "{{ .Values.ocinodeclass.sshKey }}"
+  kubelet:
+    evictionHard:
+      memory.available: "{{ .Values.ocinodeclass.kubelet.evictionHard.memory.available }}"
+      nodefs.available: "{{ .Values.ocinodeclass.kubelet.evictionHard.nodefs.available }}"
+    systemReserved:
+      memory: "{{ .Values.ocinodeclass.kubelet.systemReserved.memory }}"
+  subnetSelector:
+    - name: {{ .Values.ocinodeclass.subnetName }}
+  securityGroupSelector:
+    - name: {{ .Values.ocinodeclass.nsgName }}
+  vcnId: {{ .Values.ocinodeclass.vcnId }}
+{{- end }}

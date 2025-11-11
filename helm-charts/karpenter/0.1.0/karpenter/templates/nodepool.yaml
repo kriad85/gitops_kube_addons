@@ -1,0 +1,46 @@
+{{- if .Values.nodepool.enabled }}
+apiVersion: karpenter.sh/v1
+kind: NodePool
+metadata:
+  name: {{ .Values.nodepool.name | default "default" }}
+  labels:
+    app.kubernetes.io/name: karpenter
+    app.kubernetes.io/component: nodepool
+spec:
+  disruption:
+    budgets:
+      - nodes: {{ .Values.nodepool.disruptionBudget.nodes | default "10%" }}
+    consolidateAfter: {{ .Values.nodepool.consolidateAfter | default "30m" }}
+    consolidationPolicy: WhenEmpty
+  limits:
+    cpu: {{ .Values.nodepool.cpu | default "64" }}
+    memory: {{ .Values.nodepool.memory | default "300Gi" }}
+  template:
+    metadata:
+      labels:
+        servicegroup: {{ .Values.nodepool.labels.servicegroup | default "default" }}
+    spec:
+      nodeClassRef:
+        group: karpenter.k8s.oracle
+        kind: OciNodeClass
+        name: {{ .Values.ocinodeclass.name | default "default" }}
+      requirements:
+        - key: karpenter.sh/capacity-type
+          operator: In
+          values:
+            - {{ .Values.nodepool.capacityType | default "on-demand" }}
+        - key: karpenter.k8s.oracle/instance-shape-name
+          operator: In
+          values:
+            - {{ .Values.nodepool.shape | default "VM.Standard.E4.Flex" }}
+        - key: karpenter.k8s.oracle/instance-cpu
+          operator: In
+          values:
+          {{- range .Values.nodepool.cpuOptions }}
+            - "{{ . }}"
+          {{- end }}
+        - key: kubernetes.io/os
+          operator: In
+          values:
+            - linux
+{{- end }}

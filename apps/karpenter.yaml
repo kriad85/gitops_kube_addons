@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: karpenter-oci
+  namespace: argocd
+  labels:
+    addon: karpenter
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/<your_user>/gitops_kube_addons.git
+    targetRevision: main
+    path: helm-charts/karpenter/0.1.0/karpenter
+    helm:
+      valuesObject:
+        settings:
+          clusterName: karpenter-oci-test
+          clusterEndpoint: https://10.0.0.8:6443
+          clusterDns: 10.96.5.5
+          compartmentId: ocid1.compartment.oc1..aaaaaaaay7cdwscqmocjddiq7toywx5gnje7g4swot3pzeclakfn7zzmazta
+          ociResourcePrincipalRegion: eu-frankfurt-1
+  destination:
+    name: in-cluster
+    namespace: karpenter
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
