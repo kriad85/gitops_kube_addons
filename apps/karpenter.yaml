@@ -14,8 +14,8 @@ spec:
     helm:
       valuesObject:
         settings:
-          clusterName: karpenter-oci-test
-          clusterEndpoint: https://10.0.0.8:6443
+          clusterName: demo-oke-cluster
+          clusterEndpoint: https://141.147.53.65:6443
           clusterDns: 10.96.5.5
           compartmentId: ocid1.compartment.oc1..aaaaaaaay7cdwscqmocjddiq7toywx5gnje7g4swot3pzeclakfn7zzmazta
           ociResourcePrincipalRegion: eu-frankfurt-1

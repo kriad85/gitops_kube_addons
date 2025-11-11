@@ -106,7 +106,7 @@ logErrorOutputPaths:
 settings:
   # Core OKE / OCI parameters (required)
   clusterName: karpenter-oci-test
-  clusterEndpoint: https://10.0.0.8:6443
+  clusterEndpoint: https://141.147.53.65:6443:6443
   clusterDns: 10.96.5.5
   compartmentId: ocid1.compartment.oc1..aaaaaaaay7cdwscqmocjddiq7toywx5gnje7g4swot3pzeclakfn7zzmazta
   ociResourcePrincipalRegion: eu-frankfurt-1
@@ -136,7 +136,7 @@ ocinodeclass:
   enabled: true
   name: default
   imageFamily: OracleOKELinux
-  image: Oracle-Linux-8.10-OKE-1.34.1-1330
+  image: Oracle-Linux-8.10-OKE-1.34.1-1191-CUSTOM
   sshKey: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDQVehnoE3jVq7dSUq0OPSRNyYufWJaogZwoMQCpu7W/iJOeJ5n2X7Nf4R4nJpreT4hU5dI6UPGg+1svJBX1G7+XbmQkPB5Tvh0MKr/7ne0BkOnGx4sl+nqONhvW27ph3LCmwniSO2k6DXHmGl/TuAkyM2B0dhlLDf03d89/Sj9aVAzfg8bLu0MCSY58YiRDrln9I3knXwF6aEr0hD7JzRWzOzaQYxVaFqszSFFrl6MwG9otcz4KZoy4BjSGEAxRGEAahpQZn3eKxUfv1ct0PKJF7SyFsl/HRTGDVY7LiMo0vM9uuHldASPcD3B9jJsdjJC6Llj/7VHR+BOBcCERlfH Karim@kriad-8XJ91C4"
   vcnId: ocid1.vcn.oc1.eu-frankfurt-1.amaaaaaabipy4zqay4f7fmhpt3xaxowhwiuo6ygktkqlpo27c36au255wmdq
   subnetName: PrivateSubnetB
