@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/<your_user>/gitops_kube_addons.git
+    repoURL: https://github.com/kriad85/gitops_kube_addons.git
     targetRevision: main
     path: helm-charts/karpenter/0.1.0/karpenter
     helm:
