@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: oci-native-ingress-controller
+  namespace: argocd
+  labels:
+    addon: ingress-controller
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/kriad85/gitops_kube_addons.git
+    targetRevision: main
+    path: helm-charts/oci-native-ingress-controller
+    helm:
+      valuesObject:
+        ingressClass:
+          enabled: true
+        ingressClassParameters:
+          enabled: true
+  destination:
+    name: in-cluster
+    namespace: native-ingress-controller-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
