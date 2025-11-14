@@ -139,28 +139,8 @@ certDeletionGracePeriodInDays: 0
 # --------------------------
 # IngressClass Resource
 # --------------------------
-ingressClass:
-  enabled: true
-  name: native-ic-ingress-class
-  isDefault: "true"
-  controller: oci.oraclecloud.com/native-ingress-controller
-  parameters:
-    scope: Namespace
-    namespace: native-ingress-controller-system
-    apiGroup: ingress.oraclecloud.com
-    kind: ingressclassparameters
-    name: native-ic-params
-
-# --------------------------
-# IngressClassParameters Resource
-# --------------------------
 ingressClassParameters:
   enabled: true
-  name: native-ic-params
-  namespace: native-ingress-controller-system
-  compartmentId: ocid1.compartment.oc1..aaaaaaaay7cdwscqmocjddiq7toywx5gnje7g4swot3pzeclakfn7zzmazta
-  subnetId: ocid1.subnet.oc1.eu-frankfurt-1.aaaaaaaa5nqstltj5thp523qu7b57ykdw5xrpbzwh6gtwjelop4rmkfqht3q
-  loadBalancerName: native-ic-lb2
-  isPrivate: false
-  maxBandwidthMbps: 400
-  minBandwidthMbps: 100
+  compartmentId: $COMPARTMENT_ID
+  subnetId: SUBNET_ID
+  loadBalancerName: $LOADBALANCER_NAME
