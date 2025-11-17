@@ -1,5 +1,5 @@
 apiVersion: v2
-name: dcgm-exporter-wrapper
+name: dcgm-exporter
 version: 1.0.0
 
 dependencies:
