@@ -13,6 +13,7 @@ spec:
     chart: dcgm-exporter
     helm:
       releaseName: dcgm-exporter
+      dependencyUpdate: true
       valueFiles:
         - values.yaml
 
