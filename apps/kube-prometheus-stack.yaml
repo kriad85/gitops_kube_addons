@@ -10,6 +10,7 @@ spec:
     repoURL: https://github.com/kriad85/gitops_kube_addons
     targetRevision: main
     path: helm-charts/kube-prometheus-stack
+    chart: kube-prometheus-stack    # <<<<<< FIXED (this was missing)
     helm:
       releaseName: prom
       valueFiles:
