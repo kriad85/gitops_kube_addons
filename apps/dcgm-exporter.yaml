@@ -9,9 +9,11 @@ spec:
   source:
     repoURL: https://github.com/kriad85/gitops_kube_addons
     targetRevision: main
-    path: helm-charts/dcgm-exporter/dcgm-exporter-kustomize
-    kustomize:
-      enableHelm: true    # ⭐ THIS is the real required flag
+    path: helm-charts/dcgm-exporter
+    helm:
+      releaseName: dcgm-exporter
+      valueFiles:
+        - values.yaml
 
   destination:
     server: https://kubernetes.default.svc
