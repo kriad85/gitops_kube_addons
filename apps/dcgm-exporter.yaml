@@ -12,8 +12,6 @@ spec:
     path: helm-charts/dcgm-exporter
     helm:
       releaseName: dcgm-exporter
-      valueFiles:
-        - values.yaml
 
   destination:
     server: https://kubernetes.default.svc
