@@ -9,8 +9,6 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-options: SkipNamespace=true
 spec:
-  agentList:
-    - Bastion
   bootConfig:
     bootVolumeSizeInGBs: {{ .Values.ocinodeclass.bootVolumeSizeGB | default 100 }}
     bootVolumeVpusPerGB: {{ .Values.ocinodeclass.bootVolumeVpusPerGB | default 10 }}
