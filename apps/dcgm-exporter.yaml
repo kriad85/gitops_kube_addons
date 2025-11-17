@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dcgm-exporter
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/kriad85/gitops_kube_addons
+    targetRevision: main
+    path: helm-charts/dcgm-exporter
+    chart: dcgm-exporter
+    helm:
+      releaseName: dcgm-exporter
+      valueFiles:
+        - values.yaml
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gpu-metrics
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ServerSideApply=true
+      - CreateNamespace=true

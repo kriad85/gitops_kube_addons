@@ -15,7 +15,7 @@ spec:
       valuesObject:
         settings:
           clusterName: demo-oke-cluster
-          clusterEndpoint: https://141.147.53.65:6443
+          clusterEndpoint: https://193.122.63.129:6443
           clusterDns: 10.96.5.5
           compartmentId: ocid1.compartment.oc1..aaaaaaaay7cdwscqmocjddiq7toywx5gnje7g4swot3pzeclakfn7zzmazta
           ociResourcePrincipalRegion: eu-frankfurt-1
