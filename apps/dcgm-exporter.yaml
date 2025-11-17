@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/kriad85/gitops_kube_addons
     targetRevision: main
-    path: helm-charts/dcgm-exporter-kustomize
+    path: helm-charts/dcgm-exporter/dcgm-exporter-kustomize
 
   destination:
     server: https://kubernetes.default.svc
