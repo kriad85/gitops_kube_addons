@@ -5,4 +5,4 @@ version: 1.0.0
 dependencies:
   - name: dcgm-exporter
     version: "4.6.0"
-    repository: "https://nvidia.github.io/dcgm-exporter"
+    repository: "@gpu-helm-charts"
