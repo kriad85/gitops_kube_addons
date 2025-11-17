@@ -1,8 +1,0 @@
-resources:
-  - .
-
-patches:
-  - path: daemonset-patch.yaml
-    target:
-      kind: DaemonSet
-      name: dcgm-exporter
